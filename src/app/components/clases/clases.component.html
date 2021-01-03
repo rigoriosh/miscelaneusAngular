@@ -1,0 +1,26 @@
+<div [ngClass]="alert" class="alert" role="alert">
+    This is a primary alert—check it out!
+  </div> 
+
+  <button class="btn btn-primary mr-1" (click)="alert = 'alert-info'">
+    <i class="fa fa-times"></i>
+  </button>
+  <button class="btn btn-primary" (click)="alert = 'alert-success'">
+    <i class="fa fa-plus-square"></i>
+  </button>
+
+  <h3 [ngClass] = "{'text-danger': alert === 'alert-success'}">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, reprehenderit asperiores! Doloribus eos expedita fugit maxime quidem, tempore cupiditate earum minima sint quibusdam officia incidunt enim adipisci neque placeat quaerat?</h3>
+  <h3 [ngClass] = "{'text-danger': propiedadesStilos['danger'], 'text-info': !propiedadesStilos['danger']}">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, reprehenderit asperiores! Doloribus eos expedita fugit maxime quidem, tempore cupiditate earum minima sint quibusdam officia incidunt enim adipisci neque placeat quaerat?</h3>
+  <button [ngClass]="{'btn-danger': propiedadesStilos['danger'], 'btn-primary': !propiedadesStilos['danger']}" class="btn" (click)="propiedadesStilos['danger'] = !propiedadesStilos['danger']">
+    <i class="fa fa-angle-double-left">Change Style</i>
+  </button>
+
+  <br><br>
+
+  <h3>Async process</h3>
+  <button class="btn btn-primary" type="button" name="button" (click)="ejecutaProceso()" [disabled]="cargando">
+      <i [ngClass]= "{'fa-save': !cargando}" class="fa"></i>
+      <i [ngClass]="{'fa-refresh fa-spin':cargando}" class="fa  ml-1" aria-hidden="true"></i>      
+      <span class="ml-2" *ngIf="!cargando">Save changes</span>
+      <span class="ml-2" *ngIf="cargando">Wait please</span>
+</button>
